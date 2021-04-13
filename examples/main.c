@@ -98,14 +98,14 @@ int main(void)
 
   //INA219_setPowerMode(&ina219, INA219_CONFIG_MODE_ADCOFF);
 
+  vbus = INA219_ReadBusVoltage(&ina219);
+  vshunt = INA219_ReadShuntVolage(&ina219);
+  current = INA219_ReadCurrent(&ina219);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  	vbus = INA219_ReadBusVoltage(&ina219);
-        vshunt = INA219_ReadShuntVolage(&ina219);
-        current = INA219_ReadCurrent(&ina219);
 
   while (1)
   {
