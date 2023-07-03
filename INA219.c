@@ -12,7 +12,7 @@ uint16_t Read16(INA219_t *ina219, uint8_t Register)
 {
 	uint8_t Value[2];
 
-	HAL_I2C_Mem_Read(ina219->ina219_i2c, (INA219_ADDRESS<<1), Register, 1, Value, 2, 1000);
+	HAL_I2C_Mem_Read(ina219->ina219_i2c, (ina219->Address<<1), Register, 1, Value, 2, 1000);
 
 	return ((Value[0] << 8) | Value[1]);
 }
@@ -23,7 +23,7 @@ void Write16(INA219_t *ina219, uint8_t Register, uint16_t Value)
 	uint8_t addr[2];
 	addr[0] = (Value >> 8) & 0xff;  // upper byte
 	addr[1] = (Value >> 0) & 0xff; // lower byte
-	HAL_I2C_Mem_Write(ina219->ina219_i2c, (INA219_ADDRESS<<1), Register, 1, (uint8_t*)addr, 2, 1000);
+	HAL_I2C_Mem_Write(ina219->ina219_i2c, (ina219->Address<<1), Register, 1, (uint8_t*)addr, 2, 1000);
 }
 
 uint16_t INA219_ReadBusVoltage(INA219_t *ina219)
